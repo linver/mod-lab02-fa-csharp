@@ -149,7 +149,7 @@ namespace fans
         a.Transitions['0'] = a;
         a.Transitions['1'] = b;
         b.Transitions['0'] = a;
-        b.Transitions['1'] = b;
+        b.Transitions['1'] = c;
         c.Transitions['0'] = c;
         c.Transitions['1'] = c;            
     }
