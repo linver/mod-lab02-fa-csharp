@@ -25,13 +25,13 @@ namespace fans
         IsAcceptState = false,
         Transitions = new Dictionary<char, State>()
     };
-    public State b = new State()
+    public static State b = new State()
     {
         Name = "b",
         IsAcceptState = true,
         Transitions = new Dictionary<char, State>()
     };
-    public State c = new State()
+    public static State c = new State()
     {
         Name = "c",
         IsAcceptState = false,
@@ -40,7 +40,7 @@ namespace fans
 
     State InitialState = a;
     
-    public FA()
+    public FA1()
     {
         a.Transitions['0'] = b;
         a.Transitions['1'] = a;
@@ -53,14 +53,13 @@ namespace fans
     public bool? Run(IEnumerable<char> s)
     {
         State current = InitialState;
-        foreach (var c in s) // цикл по всем символам 
+        foreach (var c in s) 
         {
-            current = current.Transitions[c]; // меняем состояние на то, в которое у нас переход
-            if (current == null)              // если его нет, возвращаем признак ошибки
+            current = current.Transitions[c];
+            if (current == null)           
                 return null;
-            // иначе переходим к следующему
         }
-        return current.IsAcceptState;         // результат true если в конце финальное состояние 
+        return current.IsAcceptState;        
     }
   }
 
@@ -75,19 +74,19 @@ namespace fans
         IsAcceptState = false,
         Transitions = new Dictionary<char, State>()
     };
-    public State b = new State()
+    public static State b = new State()
     {
         Name = "b",
         IsAcceptState = false,
         Transitions = new Dictionary<char, State>()
     };
-    public State c = new State()
+    public static State c = new State()
     {
         Name = "c",
         IsAcceptState = true,
         Transitions = new Dictionary<char, State>()
     };
-    public State d = new State()
+    public static State d = new State()
     {
         Name = "d",
         IsAcceptState = false,
@@ -96,7 +95,7 @@ namespace fans
 
     State InitialState = a;
     
-    public FA()
+    public FA2()
     {
         a.Transitions['0'] = d;
         a.Transitions['1'] = b;
@@ -130,13 +129,13 @@ namespace fans
         IsAcceptState = false,
         Transitions = new Dictionary<char, State>()
     };
-    public State b = new State()
+    public static State b = new State()
     {
         Name = "b",
         IsAcceptState = false,
         Transitions = new Dictionary<char, State>()
     };
-    public State c = new State()
+    public static State c = new State()
     {
         Name = "c",
         IsAcceptState = true,
@@ -145,11 +144,11 @@ namespace fans
 
     State InitialState = a;
     
-    public FA()
+    public FA3()
     {
         a.Transitions['0'] = a;
         a.Transitions['1'] = b;
-        b.Transitions['0'] = а;
+        b.Transitions['0'] = a;
         b.Transitions['1'] = b;
         c.Transitions['0'] = c;
         c.Transitions['1'] = c;            
@@ -158,14 +157,13 @@ namespace fans
     public bool? Run(IEnumerable<char> s)
     {
         State current = InitialState;
-        foreach (var c in s) // цикл по всем символам 
+        foreach (var c in s)
         {
-            current = current.Transitions[c]; // меняем состояние на то, в которое у нас переход
-            if (current == null)              // если его нет, возвращаем признак ошибки
+            current = current.Transitions[c];
+            if (current == null)             
                 return null;
-            // иначе переходим к следующему
         }
-        return current.IsAcceptState;         // результат true если в конце финальное состояние 
+        return current.IsAcceptState;       
     }
   }
 
